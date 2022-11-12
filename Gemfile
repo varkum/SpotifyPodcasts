@@ -72,3 +72,6 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem "omniauth-spotify", "~> 0.0.13"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
