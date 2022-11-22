@@ -9,7 +9,9 @@ class OmniauthCallbacksController < ApplicationController
             access_token: auth.credentials.token,
             refresh_token: auth.credentials.refresh_token
         )
-        render plain: "Success!"
+        session[:user_id] = spotify_account.id 
+        
+        redirect_to home_path
         
         
     end

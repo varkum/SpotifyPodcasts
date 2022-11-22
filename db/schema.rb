@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_15_021954) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_22_190607) do
+  create_table "episodes", force: :cascade do |t|
+    t.integer "spotify_acccount_id", null: false
+    t.integer "show_id", null: false
+    t.string "name"
+    t.string "progress"
+    t.string "spotify_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["show_id"], name: "index_episodes_on_show_id"
+    t.index ["spotify_acccount_id"], name: "index_episodes_on_spotify_acccount_id"
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.integer "spotify_account_id", null: false
+    t.string "name"
+    t.string "image"
+    t.string "spotify_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spotify_account_id"], name: "index_shows_on_spotify_account_id"
+  end
+
   create_table "spotify_accounts", force: :cascade do |t|
     t.string "name"
     t.string "username"
@@ -21,4 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_021954) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "episodes", "shows"
+  add_foreign_key "episodes", "spotify_acccounts"
+  add_foreign_key "shows", "spotify_accounts"
 end

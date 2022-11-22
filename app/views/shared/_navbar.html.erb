@@ -1,0 +1,19 @@
+<nav class="w-full flex flex-grow items-center bg-zinc-700 p-6">
+    <h1 class="font-bold text-2xl mr-8">
+        <%= link_to "SpotifyPodcasts", home_path %>
+    </h1>
+    <div class="flex flex-grow font-semibold">
+        <div class="mr-4">
+            <%= link_to "My Shows", shows_path %>
+        </div>
+        <div class="mr-4">
+            <%= link_to "In Progress", episodes_path %>
+        </div>
+        <div class="mr-4">
+            <%= link_to "Favorites" %>
+        </div>
+    </div>
+    <div>
+        <%= Current.user.name %>
+    </div>
+</nav>

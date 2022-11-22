@@ -11,8 +11,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="min-h-screen bg-gray-800">
+  <body class="min-h-screen bg-gray-800 text-white">
     <main class="min-h-full">
+      <%= render partial: "shared/navbar" %>
       <%= yield %>
     </main>
   </body>
