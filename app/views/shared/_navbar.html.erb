@@ -2,18 +2,22 @@
     <h1 class="font-bold text-2xl mr-8">
         <%= link_to "SpotifyPodcasts", home_path %>
     </h1>
-    <div class="flex flex-grow font-semibold">
-        <div class="mr-4">
-            <%= link_to "My Shows", shows_path %>
+    <% if Current.user.present? %>
+        <div class="flex flex-grow font-semibold">
+            <div class="mr-4">
+                <%= link_to "My Shows", shows_path %>
+            </div>
+            <div class="mr-4">
+                <%= link_to "In Progress", episodes_path %>
+            </div>
+            <div class="mr-4">
+                <%= link_to "Favorites" %>
+            </div>
         </div>
-        <div class="mr-4">
-            <%= link_to "In Progress", episodes_path %>
+        <div class="flex items-center border-green-600 border-2 rounded-3xl px-3 py-2 hover:opacity-70 hover:cursor-pointer font-semibold">
+            <img src="<%= Current.user.image %>" alt="profile" width="30" height="30" class="rounded-3xl mr-2"/>
+            <%= Current.user.name %>
+            <i class="fa-solid fa-caret-down ml-2"></i>
         </div>
-        <div class="mr-4">
-            <%= link_to "Favorites" %>
-        </div>
-    </div>
-    <div>
-        <%= Current.user.name %>
-    </div>
+    <% end %>
 </nav>
