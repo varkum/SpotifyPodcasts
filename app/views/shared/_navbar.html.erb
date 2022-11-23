@@ -20,8 +20,8 @@
                 <%= Current.user.name %>
                 <i data-navbar-target="icon" class="fa-solid fa-caret-down ml-2"></i>
             </div>
-            <div data-navbar-target="menu" class="hidden fixed ml-16">
-                <%= button_to "Sign out", signout_path, method: :delete, class: "bg-red-500 rounded-2xl px-6 py-2 hover:opacity-70 hover:cursor-pointer" %>
+            <div data-navbar-target="menu" class="hidden fixed">
+                <%= button_to "Sign out", signout_path, method: :delete, class: "bg-red-500 rounded px-16 py-2 hover:opacity-70 hover:cursor-pointer" %>
             </div>
         </div>
     <% end %>
