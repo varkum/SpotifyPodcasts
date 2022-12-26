@@ -3,6 +3,6 @@ class HomeController < ApplicationController
 
     def index
         client = SpotifyApi::Client.new
-        Rails.logger.info(client.hello)
+        Rails.logger.info(client.refresh)
     end
 end
