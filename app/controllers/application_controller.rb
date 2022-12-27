@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
             redirect_to root_path
         end
     end
+
+    
     private
 
     def set_current_user
@@ -13,5 +15,7 @@ class ApplicationController < ActionController::Base
             Current.user = SpotifyAccount.find(session[:user_id])
         end
     end
+
+    
 
 end

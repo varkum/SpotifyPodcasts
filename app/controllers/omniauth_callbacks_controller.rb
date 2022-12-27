@@ -7,7 +7,8 @@ class OmniauthCallbacksController < ApplicationController
             username: auth.info.nickname,
             image: auth.info.image,
             access_token: auth.credentials.token,
-            refresh_token: auth.credentials.refresh_token
+            refresh_token: auth.credentials.refresh_token,
+            expires_at: auth.credentials.expires_at
         )
         session[:user_id] = spotify_account.id 
 

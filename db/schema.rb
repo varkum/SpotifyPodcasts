@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_190607) do
     t.string "image"
     t.string "access_token"
     t.string "refresh_token"
+    t.decimal "expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

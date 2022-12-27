@@ -1,1 +1,13 @@
-<%= Current.user.name %>
+<div>
+    <h2 class="font-bold text-2xl mt-4">
+        Continue Listening
+    </h2>
+
+    <div class="flex overflow-scroll mr-8 flex-nowrap">
+        <% @episodes.each do |episode| %>
+            <%= render partial: "episodes/episode", locals: {episode: episode} %>
+        <% end %>
+    </div>
+</div>
+
+

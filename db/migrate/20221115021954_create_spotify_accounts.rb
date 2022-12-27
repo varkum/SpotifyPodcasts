@@ -6,7 +6,7 @@ class CreateSpotifyAccounts < ActiveRecord::Migration[7.0]
       t.string :image
       t.string :access_token
       t.string :refresh_token
-
+      t.numeric :expires_at
       t.timestamps
     end
   end
