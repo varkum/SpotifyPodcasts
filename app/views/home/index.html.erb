@@ -1,9 +1,9 @@
-<div>
-    <h2 class="font-bold text-2xl mt-4">
+<div class="mx-4">
+    <h2 class="font-bold text-2xl my-4">
         Continue Listening
     </h2>
 
-    <div class="flex overflow-scroll mr-8 flex-nowrap">
+    <div class="flex overflow-scroll flex-nowrap">
         <% @episodes.each do |episode| %>
             <%= render partial: "episodes/episode", locals: {episode: episode} %>
         <% end %>

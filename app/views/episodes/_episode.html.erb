@@ -1,4 +1,11 @@
-
-
-
-    <img src="<%= episode["episode"]["images"][0]["url"]%>" alt="profile" width="200" height="200" class="rounded mr-4"/>
+<div class="shrink-0 flex flex-col w-52 mr-16">
+    <img src="<%= episode["episode"]["images"][0]["url"]%>" alt="profile" width="200" height="200" class="rounded"/>
+    <div class="text-center inline-block">
+        <h3 class="text-ellipses">
+            <%= episode["episode"]["name"]%>
+        </h3>
+        <h4 class="text-sm mt-1 text-slate-400">
+            <%= episode["episode"]["show"]["name"]%>
+        </h4>
+    </div>
+</div>
