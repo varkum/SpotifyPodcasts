@@ -15,7 +15,7 @@ module SpotifyApi
           @expires_at = options[:expires_at]
         end
 
-        def get_saved_episodes
+        def fetch_saved_episodes
           self.refresh
           self.class.get("/me/episodes", {headers: {Authorization: "Bearer #{@access_token}"}})
         end 

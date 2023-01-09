@@ -1,4 +1,3 @@
 class Episode < ApplicationRecord
-  belongs_to :spotify_acccount
-  belongs_to :show
+  belongs_to :spotify_account
 end
