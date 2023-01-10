@@ -29,9 +29,9 @@ class SpotifyAccount < ApplicationRecord
             end
 
             local_episode.update(
-                
                 name: episode["episode"]["name"],
                 progress: time_left,
+                duration: episode["episode"]["duration_ms"],
                 spotify_id: episode["episode"]["id"],
                 status: status,
                 starred: false,

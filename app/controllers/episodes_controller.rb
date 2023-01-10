@@ -4,7 +4,7 @@ class EpisodesController < ApplicationController
 
     #GET /episodes
     def index
-
+        @episodes = Current.user.episodes.all
     end
 
     #GET /episodes/new

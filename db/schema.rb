@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_22_190607) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_10_165143) do
   create_table "episodes", force: :cascade do |t|
     t.integer "spotify_account_id", null: false
     t.string "name"
     t.string "show"
     t.string "image"
-    t.string "progress"
+    t.integer "progress"
     t.string "spotify_id"
     t.string "status"
     t.boolean "starred"
     t.datetime "last_played"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "duration"
     t.index ["spotify_account_id"], name: "index_episodes_on_spotify_account_id"
   end
 

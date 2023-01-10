@@ -1,0 +1,18 @@
+<div class="flex w-full border-t-2 border-gray-500 p-4">
+    <img src="<%= episode.image%>" alt="profile" width="100" height="100" class="rounded"/>
+    <div class="ml-8">
+        <h3 class="text-ellipses">
+            <%= episode.name%>
+        </h3>
+        <h4 class="text-sm mt-1 text-slate-400">
+            <%= episode.show%>
+        </h4>
+        <div class="mt-6">
+            <div class="h-2.5 w-52 bg-gray-600 rounded-full mb-1">
+                <div class="rounded-full h-2.5 bg-green-500" style="width:<%= ((episode.duration - episode.progress) / episode.duration.to_f) * 100 %>%"></div>
+            </div>
+
+            <%= ms_to_time(episode.progress) %> left 
+        </div>
+    </div>
+</div>
