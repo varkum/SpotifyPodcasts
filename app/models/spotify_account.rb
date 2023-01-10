@@ -18,13 +18,14 @@ class SpotifyAccount < ApplicationRecord
         self.client.fetch_saved_episodes["items"].each do |episode|
       
             local_episode = self.episodes.where(name: episode["episode"]["name"]).first_or_initialize
-            status = "new"
+            status = "in_progress"
             time_left = episode["episode"]["duration_ms"] - episode["episode"]["resume_point"]["resume_position_ms"]
             Rails.logger.info(local_episode.spotify_account_id)
-            if (time_left > 30000)
-                status = "in_progress"
-            else  
+            
+            if (episode["episode"]["resume_point"]["fully_played"] or time_left < 180000)
                 status = "done"
+            elsif (episode["episode"]["resume_point"]["resume_position_ms"] == 0)
+                status = "new"
             end
 
             local_episode.update(
