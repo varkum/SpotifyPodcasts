@@ -7,6 +7,14 @@ class EpisodesController < ApplicationController
         @episodes = Current.user.episodes.all
     end
 
+    def history
+        @episodes = Current.user.episodes.where(status: "done")
+    end
+
+    def favorites
+        @episodes = Current.user.episodes.where(starred: true)
+    end
+    
     #GET /episodes/new
     def new
 

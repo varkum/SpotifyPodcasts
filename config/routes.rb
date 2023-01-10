@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   delete "/signout", to: "sessions#destroy"
   resources :shows
   resources :episodes
+
+  get "/history", to: "episodes#history"
+  get "favorites", to: "episodes#favorites"
   # Defines the root path route ("/")
   # root "articles#index"
   root "sessions#index"
