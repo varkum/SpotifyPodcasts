@@ -14,7 +14,7 @@ class EpisodesController < ApplicationController
     def favorites
         @episodes = Current.user.episodes.where(starred: true)
     end
-    
+
     #GET /episodes/new
     def new
 
@@ -32,7 +32,15 @@ class EpisodesController < ApplicationController
 
     #PATCH /episodes/:id
     def update
-
+        respond_to do |format|
+            if @episode.update(episode_params)
+                format.turbo_stream 
+            else
+                format.html { render :edit, status: :unprocessable_entity }
+                format.json { render json: @book.errors, status: :unprocessable_entity }
+            end
+        end
+        
     end
 
     #DELETE /episodes/:id
@@ -43,6 +51,10 @@ class EpisodesController < ApplicationController
     private
 
     def set_episode
-        @episode = Episode.find(params[:id])
+        @episode = Current.user.episodes.find(params[:id])
+    end
+
+    def episode_params
+        params.require(:episode).permit(:starred)
     end
 end

@@ -34,7 +34,6 @@ class SpotifyAccount < ApplicationRecord
                 duration: episode["episode"]["duration_ms"],
                 spotify_id: episode["episode"]["id"],
                 status: status,
-                starred: false,
                 image: episode["episode"]["images"][0]["url"],
                 show: episode["episode"]["show"]["name"]
             )

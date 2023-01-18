@@ -1,0 +1,3 @@
+<%= turbo_stream.replace @episode do %>
+    <%= render partial: "full_episode", locals: {episode: @episode}%>
+<% end %>
