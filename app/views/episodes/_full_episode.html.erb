@@ -1,22 +1,29 @@
-<div class="flex w-full border-t-2 border-gray-500 p-4">
-    <img src="<%= episode.image%>" alt="profile" width="100" height="100" class="rounded"/>
-    <div class="ml-8">
-        <h3 class="text-ellipses">
-            <%= episode.name%>
-        </h3>
-        <h4 class="text-sm mt-1 text-slate-400">
-            <%= episode.show%>
-        </h4>
-        <div class="mt-6">
-            <% if (episode.status == 'done') %>
-                <i class="fa-solid fa-check text-green-500"></i> Played
-            <% else %>
-                <div class="h-2.5 w-52 bg-gray-600 rounded-full mb-1">
-                    <div class="rounded-full h-2.5 bg-green-500" style="width:<%= ((episode.duration - episode.progress) / episode.duration.to_f) * 100 %>%"></div>
-                </div>
-                <%= ms_to_time(episode.progress) %> left 
-            <% end %>
-           
+<div class="flex justify-between w-full border-t-2 border-gray-500 p-4">
+    <div class="flex">
+        <img src="<%= episode.image%>" alt="profile" width="100" height="100" class="rounded"/>
+        <div class="ml-8">
+            <h3 class="text-ellipses">
+                <%= episode.name%>
+            </h3>
+            <h4 class="text-sm mt-1 text-slate-400">
+                <%= episode.show%>
+            </h4>
+            <div class="mt-6">
+                
+                    <% if (episode.status == 'done') %>
+                        <i class="fa-solid fa-check text-green-500"></i> Played
+                    <% else %>
+                        <div class="h-2.5 w-52 bg-gray-600 rounded-full mb-1">
+                            <div class="rounded-full h-2.5 bg-green-500" style="width:<%= ((episode.duration - episode.progress) / episode.duration.to_f) * 100 %>%"></div>
+                        </div>
+                        <%= ms_to_time(episode.progress) %> left 
+                    <% end %>
+                
+                
+            </div>
         </div>
+    </div>
+    <div class="mr-8 self-end">
+        <%= link_to image_tag("Spotify-logo.png", width: "50", height: "50", class:'rounded-xl'), "https://open.spotify.com/episode/#{episode.spotify_id}?si", title: "Play in Spotify" %>
     </div>
 </div>
