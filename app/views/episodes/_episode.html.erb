@@ -2,7 +2,10 @@
 <div class="relative" data-episode-target = "episode" data-action="mouseover->episode#playHover mouseleave->episode#exitHover">
     
     <div class="z-10 hidden absolute right-1/2 top-1/2" >
-        <i class="fa-solid fa-play text-green-500 text-4xl" id="play_button"></i>
+        <%= link_to  "https://open.spotify.com/episode/#{episode.spotify_id}?si" do %>
+            <i class="fa-solid fa-play text-green-500 text-4xl cursor-pointer" id="play_button"></i>
+        <% end %>
+        
     </div>
 
     <div class="z-0">
