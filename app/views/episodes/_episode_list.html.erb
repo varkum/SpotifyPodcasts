@@ -1,21 +1,5 @@
-<div class="flex justify-between mx-4 my-8">
-    <%= form_with url: filter_episodes_path, method: :get do |form| %>
-        <%= form.text_field :search, placeholder: "Search...", class: 'mt-6 w-72 rounded-3xl' %>
-    <% end %>
-    <div class="flex">
-        <%= form_with url: filter_episodes_path, method: :get, class: 'flex flex-col' do |form| %>
-            <%= form.label "Played", class:"mb-1" %>
-            <%= form.select :status, [['All', nil],['Played', 'done'], ['In Progress', 'in_progress'],['New', 'new']], {}, {class: 'bg-slate-900 rounded'} %>
-        <% end %>
-    
-        <%= form_with url: filter_episodes_path, method: :get, data: {turbo_frame: episodes}, class: 'flex flex-col ml-4' do |form| %>
-            <%= form.label "Favorites", class: "mb-1" %>
-            <%= form.select :status, [['All', nil], ['Favorites only', 1], ['Non-favorites only', 0]], {}, {class: 'bg-slate-900 rounded'} %>
-        <% end %>
-    </div>
-    
-</div>
-<%= turbo_frame_tag episodes do %>
+
+<%= turbo_frame_tag "episodes" do %>
     <div>
         <% episodes.each do |episode| %>
             <%= render partial: "full_episode", locals: {episode: episode} %>
