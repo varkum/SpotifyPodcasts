@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def refresh_user_saved_episodes
+        Current.user.get_saved_episodes
+    end
+
     
 
 end
