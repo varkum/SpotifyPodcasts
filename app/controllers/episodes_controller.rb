@@ -32,6 +32,7 @@ class EpisodesController < ApplicationController
         @episodes = @episodes.where(starred: session['filters']['show_starred']) if session['filters']['show_starred'].present?
 
         render partial: 'episode_list', locals: {episodes: @episodes}
+    
     end
 
     #GET /episodes/new
@@ -54,6 +55,9 @@ class EpisodesController < ApplicationController
         respond_to do |format|
             if @episode.update(episode_params)
                 format.turbo_stream 
+                format.html { redirect_to "https://open.spotify.com/episode/#{@episode.spotify_id}?si", allow_other_host: true }
+
+                
             else
                 format.html { render :edit, status: :unprocessable_entity }
                 format.json { render json: @book.errors, status: :unprocessable_entity }
@@ -75,7 +79,7 @@ class EpisodesController < ApplicationController
     end
 
     def episode_params
-        params.require(:episode).permit(:starred)
+        params.require(:episode).permit(:starred, :last_played)
     end
 
     def filter_params
