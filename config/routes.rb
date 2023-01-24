@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   get "/home", to: "home#index"
 
   delete "/signout", to: "sessions#destroy"
-  resources :shows
-  resources :episodes
+  resources :shows 
+  resources :episodes do
+    collection do
+      get 'filter'
+    end
+  end
 
   get "/history", to: "episodes#history"
   get "favorites", to: "episodes#favorites"

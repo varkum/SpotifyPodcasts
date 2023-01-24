@@ -43,6 +43,11 @@ class EpisodesController < ApplicationController
         
     end
 
+    #GET /episodes/filter
+    def filter
+        
+    end
+
     #DELETE /episodes/:id
     def destroy
 
@@ -56,5 +61,9 @@ class EpisodesController < ApplicationController
 
     def episode_params
         params.require(:episode).permit(:starred)
+    end
+
+    def filter_params
+        params.permit(:search, :starred, :starred)
     end
 end
