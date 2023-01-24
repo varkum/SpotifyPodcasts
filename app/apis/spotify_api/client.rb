@@ -20,6 +20,11 @@ module SpotifyApi
           self.class.get("/me/episodes", {headers: {Authorization: "Bearer #{@access_token}"}})
         end 
 
+        def unsave_episode(spotify_id)
+          self.refresh
+          self.class.delete("/me/episodes/#{spotify_id}", {headers: {Authorization: "Bearer #{@access_token}"}})
+        end
+
         def refresh 
           if ( @expires_at - Time.now.to_i <=0 )
             @access_token = self.class.post("https://accounts.spotify.com/api/token", {headers: {Authorization: "Basic " +  Base64.strict_encode64("#{Rails.application.credentials.dig(:spotify, :client_id)}:#{Rails.application.credentials.dig(:spotify, :client_secret)}")}, Content_type: "application/x-www-form-urlencoded", body: {grant_type: "refresh_token", refresh_token: @refresh_token.to_s}})["access_token"]

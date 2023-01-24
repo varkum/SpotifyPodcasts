@@ -43,7 +43,11 @@ class SpotifyAccount < ApplicationRecord
 
     def clear_episodes
         self.episodes.each do |episode|
-            
+            if episode.last_played && episode.status == "in_progress" && DateTime.now.to_i - episode.last_played.to_i > 14.days
+                self.client.unsave_episode(episode.spotify_id)
+                self.episodes.find(episode.id).destroy
+
+            end
         end
     end
 
