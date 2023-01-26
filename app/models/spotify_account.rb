@@ -39,7 +39,7 @@ class SpotifyAccount < ApplicationRecord
             )
 
         end 
-    end
+    end 
 
     def clear_episodes
         self.episodes.each do |episode|
