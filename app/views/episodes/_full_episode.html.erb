@@ -1,7 +1,7 @@
 <%= turbo_frame_tag episode do %>
-    <div class="flex justify-between w-full border-t-2 border-gray-500 p-4">
+    <div class="flex lg:flex-row flex-col justify-between w-full border-t-2 border-gray-500 p-4">
         <div class="flex">
-            <img src="<%= episode.image%>" alt="profile" width="100" height="100" class="rounded"/>
+            <img src="<%= episode.image%>" alt="profile" class="w-28 h-28 rounded"/>
             <div class="ml-8">
                 <h3 class="text-ellipses">
                     <%= episode.name%>
@@ -24,9 +24,9 @@
                 </div>
             </div>
         </div>
-        <div class="flex mr-8 self-end">
+        <div class="flex mt-4 lg:mt-0 lg:mr-8 self-end">
             
-            <%= button_to episode_path(episode.id, episode: {starred: !episode.starred}), method: :patch, form_class: "mr-2" do %>
+            <%= button_to episode_path(episode.id, episode: {starred: !episode.starred}), method: :patch, form_class: "lg:mr-2" do %>
                 <% if episode.starred %>
                     <i class="fa-solid fa-heart text-xl text-green-500"></i>
                 <% else %>
@@ -34,7 +34,7 @@
                 <% end %>
             <% end %>
             <%= button_to episode_path(episode.id, episode: {last_played: DateTime.now()}, format: 'html'), method: :patch, class: "contents", data: {turbo: false} do %>
-                <%= image_tag("Spotify-logo.png", width: "50", height: "50", class:'rounded-xl', title: "Play in Spotify") %>
+                <%= image_tag("Spotify-logo.png", class:'h-auto w-10 lg:w-12 rounded-xl', title: "Play in Spotify") %>
             <% end %>
             
                 
