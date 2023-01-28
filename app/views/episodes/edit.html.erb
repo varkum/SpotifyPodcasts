@@ -1,0 +1,7 @@
+<% frame_id = dom_id(@episode, "youtube_form") %>
+<%= turbo_frame_tag frame_id do %>
+    <%= form_with model: @episode, class: "flex" do |form| %>
+        <%= form.text_field :youtube_id, placeholder: "Enter Youtube URL..." %>
+        <%= form.submit "Add" %>
+    <% end %>
+<% end %>

@@ -36,12 +36,21 @@
             <%= button_to episode_path(episode.id, episode: {last_played: DateTime.now()}, format: 'html'), method: :patch, class: "contents", data: {turbo: false} do %>
                 <%= image_tag("Spotify-logo.png", class:'h-auto w-10 lg:w-12 rounded-xl', title: "Play in Spotify") %>
             <% end %>
+            <% frame_id = dom_id(episode, "youtube_form") %>
+            <% if episode.youtube_id %>
+                <%= link_to episode_path(episode) do %>
+                    <i class="fa-brands fa-youtube text-red-500 text-3xl"></i>
+                <% end %>
+            <% else %>
+                <%= link_to edit_episode_path(episode), data: {turbo_frame: frame_id} do %>
+                    <i class="fa-solid fa-plus text-white text-2xl"></i>
+                <% end %>
+            <% end %>
             
-                
-
-            
-           
         </div>
         
+        
     </div>
+    <%= turbo_frame_tag frame_id do %>
+        <% end %>
 <% end %>

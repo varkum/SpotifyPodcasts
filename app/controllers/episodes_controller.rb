@@ -1,5 +1,5 @@
 class EpisodesController < ApplicationController
-    before_action :set_episode, only: [:show, :update, :destroy]
+    before_action :set_episode, only: [:show, :update, :edit, :destroy]
     before_action :require_user_logged_in
     before_action :refresh_user_saved_episodes, only: [:index, :history, :favorites]
 
@@ -40,6 +40,9 @@ class EpisodesController < ApplicationController
 
     end
 
+    def edit 
+    end
+    
     #POST /episodes
     def create
 
