@@ -42,7 +42,7 @@ class EpisodesController < ApplicationController
 
     def edit 
     end
-    
+
     #POST /episodes
     def create
 
@@ -82,7 +82,7 @@ class EpisodesController < ApplicationController
     end
 
     def episode_params
-        params.require(:episode).permit(:starred, :last_played)
+        params.require(:episode).permit(:starred, :last_played, :youtube_id)
     end
 
     def filter_params

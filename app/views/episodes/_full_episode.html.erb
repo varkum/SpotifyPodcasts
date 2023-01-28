@@ -37,7 +37,7 @@
                 <%= image_tag("Spotify-logo.png", class:'h-auto w-10 lg:w-12 rounded-xl', title: "Play in Spotify") %>
             <% end %>
             <% frame_id = dom_id(episode, "youtube_form") %>
-            <% if episode.youtube_id %>
+            <% unless episode.youtube_id.blank? %>
                 <%= link_to episode_path(episode) do %>
                     <i class="fa-brands fa-youtube text-red-500 text-3xl"></i>
                 <% end %>
@@ -51,6 +51,9 @@
         
         
     </div>
-    <%= turbo_frame_tag frame_id do %>
+
+         <%= turbo_frame_tag frame_id do %>
         <% end %>
+    
+   
 <% end %>
