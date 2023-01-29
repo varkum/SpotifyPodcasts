@@ -59,6 +59,7 @@ class EpisodesController < ApplicationController
             if @episode.update(episode_params)
                 format.turbo_stream 
                 format.html { redirect_to "https://open.spotify.com/episode/#{@episode.spotify_id}?si", allow_other_host: true }
+                
 
                 
             else
@@ -82,7 +83,7 @@ class EpisodesController < ApplicationController
     end
 
     def episode_params
-        params.require(:episode).permit(:starred, :last_played, :youtube_id)
+        params.require(:episode).permit(:starred, :last_played, :youtube_id, :status, :youtube_progress)
     end
 
     def filter_params

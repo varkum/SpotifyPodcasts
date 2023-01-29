@@ -14,10 +14,18 @@
                         <% if (episode.status == 'done') %>
                             <i class="fa-solid fa-check text-green-500"></i> Played
                         <% else %>
-                            <div class="h-2.5 w-52 bg-gray-600 rounded-full mb-1">
-                                <div class="rounded-full h-2.5 bg-green-500" style="width:<%= ((episode.duration - episode.progress) / episode.duration.to_f) * 100 %>%"></div>
-                            </div>
-                            <%= ms_to_time(episode.progress) %> left 
+                            <% if episode.youtube_progress.blank? %>
+                                <div class="h-2.5 w-52 bg-gray-600 rounded-full mb-1">
+                                    <div class="rounded-full h-2.5 bg-green-500" style="width:<%= ((episode.duration - episode.progress) / episode.duration.to_f) * 100 %>%"></div>
+                                </div>
+                                <%= ms_to_time(episode.progress) %> left 
+                            <% else %>
+                                <div class="h-2.5 w-52 bg-gray-600 rounded-full mb-1">
+                                    <div class="rounded-full h-2.5 bg-green-500" style="width:<%= ((episode.duration - episode.youtube_progress) / episode.duration.to_f) * 100 %>%"></div>
+                                </div>
+                                <%= ms_to_time(episode.youtube_progress) %> left 
+                            <% end %>
+                            
                         <% end %>
                     
                     

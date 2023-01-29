@@ -6,3 +6,6 @@
     <%= render partial: "favorites", locals: {episodes: Current.user.episodes.where(starred: true)}%>
 <% end %>
 
+<%= turbo_stream.update "show_page" do %>
+    <div></div>
+<% end %>

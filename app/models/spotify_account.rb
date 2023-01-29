@@ -22,11 +22,7 @@ class SpotifyAccount < ApplicationRecord
             time_left = episode["episode"]["duration_ms"] - episode["episode"]["resume_point"]["resume_position_ms"]
             Rails.logger.info(local_episode.spotify_account_id)
             
-            if (episode["episode"]["resume_point"]["fully_played"] or time_left < 180000)
-                status = "done"
-            elsif (episode["episode"]["resume_point"]["resume_position_ms"] == 0)
-                status = "new"
-            end
+            
 
             local_episode.update(
                 name: episode["episode"]["name"],
@@ -38,6 +34,18 @@ class SpotifyAccount < ApplicationRecord
                 show: episode["episode"]["show"]["name"]
             )
 
+            if local_episode.youtube_progress.blank?
+                if (episode["episode"]["resume_point"]["fully_played"] or time_left < 180000)
+                    status = "done"
+                elsif (episode["episode"]["resume_point"]["resume_position_ms"] == 0)
+                    status = "new"
+                end
+            else  
+                if (local_episode.youtube_progress < 180000)
+                    status = "done"
+                end
+            end
+            local_episode.update(status: status)
         end 
     end 
 

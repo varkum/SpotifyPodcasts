@@ -1,9 +1,16 @@
-<div class="w-full flex flex-col items-center">
+<% start_position = @episode.youtube_progress.blank? ? (@episode.duration - @episode.progress)/1000 : (@episode.duration - @episode.youtube_progress)/1000 %>
+
+<div class="w-full flex flex-col items-center" data-controller="youtube" data-youtube-youtube-id-value = "<%= @episode.youtube_id.partition('=').last %>" data-youtube-start-position-value = "<%= start_position %>" data-youtube-duration-value = "<%=@episode.duration%>"> 
     <div class="my-8 text-center">
         <h2 class="text-3xl font-bold"><%= @episode.name%></h2>
         <h3 class="text-2xl text-gray-500"><%=@episode.show%></h3>
     </div>
-    <div data-controller="youtube" data-youtube-target = "display" data-youtube-youtube-id-value = "<%= @episode.youtube_id.partition('=').last %>" data-youtube-start-position-value = "<%= (@episode.duration - @episode.progress)/1000 %>">
+    <div  data-youtube-target = "display" >
     </div>
+    <%= form_with url: episode_path(@episode), method: :patch, class: "hidden", data: {youtube_target: 'form'} do |form| %>
+    <% end %>
 </div>
+<%= turbo_frame_tag "show_page" do %>
+    <div></div>
+<% end %>
 
