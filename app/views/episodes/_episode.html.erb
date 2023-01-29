@@ -1,13 +1,24 @@
-<%= link_to "https://open.spotify.com/episode/#{episode.spotify_id}?si" do %>
+
 <div class="shrink-0 flex flex-col lg:w-52 w-32 mx-4" data-controller="episode" >
-    <div class="relative" data-episode-target = "episode" data-action="mouseover->episode#playHover mouseleave->episode#exitHover">
+    <div class="relative" data-action="mouseover->episode#playHover mouseleave->episode#exitHover">
+            <div class="w-full z-10 absolute top-1/2 hidden text-center" data-episode-target="quickPlayBtn">
+                <%= link_to "https://open.spotify.com/episode/#{episode.spotify_id}?si" do %>
+                    <i class="fa-solid fa-play text-green-500 text-4xl cursor-pointer mr-4" ></i>
+                <% end %>
+                <% unless episode.youtube_id.blank?%>
+                    <%= link_to episode_path(episode) do %>
+                        <i class="fa-brands fa-youtube text-red-500 text-4xl cursor-pointer" ></i>
+                    <% end %>
+                <% end %>
+                
+                
+            </div>
+       
         
-        <div class="z-10 hidden absolute right-1/2 top-1/2" >
-            <i class="fa-solid fa-play text-green-500 text-4xl cursor-pointer" id="play_button"></i>
-        </div>
-        <div class="z-0">
+        <div class="z-0" data-episode-target="img">
             <img src="<%= episode.image%>" alt="profile" class="lg:w-52 lg:h-52 w-32 h-32 rounded"  />
         </div>
+        
     </div>
     
     <div class="text-center inline-block">
@@ -19,4 +30,4 @@
         </h4>
     </div>
 </div>
-<% end %>
+

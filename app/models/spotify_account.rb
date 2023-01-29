@@ -20,28 +20,26 @@ class SpotifyAccount < ApplicationRecord
             local_episode = self.episodes.where(name: episode["episode"]["name"]).first_or_initialize
             status = "in_progress"
             time_left = episode["episode"]["duration_ms"] - episode["episode"]["resume_point"]["resume_position_ms"]
-            Rails.logger.info(local_episode.spotify_account_id)
             
-            
-
             local_episode.update(
                 name: episode["episode"]["name"],
                 progress: time_left,
                 duration: episode["episode"]["duration_ms"],
                 spotify_id: episode["episode"]["id"],
-                status: status,
                 image: episode["episode"]["images"][0]["url"],
                 show: episode["episode"]["show"]["name"]
             )
 
             if local_episode.youtube_progress.blank?
-                if (episode["episode"]["resume_point"]["fully_played"] or time_left < 180000)
+                Rails.logger.info("heres the youtube progress: #{local_episode.youtube_progress}")
+                if (episode["episode"]["resume_point"]["fully_played"] or time_left < 300000)
                     status = "done"
                 elsif (episode["episode"]["resume_point"]["resume_position_ms"] == 0)
                     status = "new"
                 end
             else  
-                if (local_episode.youtube_progress < 180000)
+                Rails.logger.info("youtube status update! #{local_episode.name}")
+                if (local_episode.youtube_progress < 300000)
                     status = "done"
                 end
             end
