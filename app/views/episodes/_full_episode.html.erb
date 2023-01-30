@@ -46,9 +46,9 @@
             <% end %>
             <% frame_id = dom_id(episode, "youtube_form") %>
             <% unless episode.youtube_id.blank? %>
-                <%= link_to episode_path(episode) do %>
-                    <i class="fa-brands fa-youtube text-red-500 text-3xl"></i>
-                <% end %>
+                <%= button_to episode_path(episode.id, episode: {last_played: DateTime.now()}, format: 'html', play_source: "yt"), method: :patch, class: "contents", data: {turbo: false} do %>
+                        <i class="fa-brands fa-youtube text-red-500 text-3xl cursor-pointer" ></i>
+                    <% end %>
             <% else %>
                 <%= link_to edit_episode_path(episode), data: {turbo_frame: frame_id} do %>
                     <i class="fa-solid fa-plus text-white text-2xl"></i>

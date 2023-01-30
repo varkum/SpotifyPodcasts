@@ -58,7 +58,15 @@ class EpisodesController < ApplicationController
         respond_to do |format|
             if @episode.update(episode_params)
                 format.turbo_stream 
-                format.html { redirect_to "https://open.spotify.com/episode/#{@episode.spotify_id}?si", allow_other_host: true }
+                format.html { 
+                    
+                    if params.permit(:play_source)["play_source"] == 'yt'
+                        redirect_to episode_path(@episode.id)
+                    else 
+                        redirect_to "https://open.spotify.com/episode/#{@episode.spotify_id}?si", allow_other_host: true
+                    end
+
+                     }
                 
 
                 
@@ -89,4 +97,6 @@ class EpisodesController < ApplicationController
     def filter_params
         params.permit(:search, :status, :show_starred)
     end
+
+    
 end

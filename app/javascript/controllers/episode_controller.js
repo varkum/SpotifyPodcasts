@@ -5,15 +5,11 @@ export default class extends Controller {
 
   playHover() {
     this.imgTarget.setAttribute("style", "opacity: 60%");
-    this.quickPlayBtnTarget.classList.remove("hidden");
-    //this.episodeTarget.children[1].setAttribute("style", "opacity: 60%");
-    //this.episodeTarget.children[0].classList.remove("hidden");
+    this.quickPlayBtnTarget.classList.replace("hidden", "flex");
   }
 
   exitHover() {
     this.imgTarget.setAttribute("style", "opacity: 100%");
-    this.quickPlayBtnTarget.classList.add("hidden");
-    //this.episodeTarget.children[1].setAttribute("style", "opacity: 100%");
-    //this.episodeTarget.children[0].classList.add("hidden");
+    this.quickPlayBtnTarget.classList.replace("flex", "hidden");
   }
 }
