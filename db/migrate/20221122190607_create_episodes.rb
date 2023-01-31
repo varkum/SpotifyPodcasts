@@ -5,7 +5,7 @@ class CreateEpisodes < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :show
       t.string :image
-      t.string :progress
+      t.integer :progress
       t.string :spotify_id
       t.string :status
       t.boolean :starred

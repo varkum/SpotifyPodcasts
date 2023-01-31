@@ -40,29 +40,31 @@
         </div>
     </div>
     
-    <div class="hidden lg:hidden" data-navbar-target="mobileMenu">
-        <div class="flex flex-col font-light">
-            <div class="mt-4">
-                        <%= link_to "My Episodes", episodes_path %>
-                    </div>
+    <% if Current.user.present? %>
+        <div class="hidden lg:hidden" data-navbar-target="mobileMenu">
+            <div class="flex flex-col font-light">
+                <div class="mt-4">
+                            <%= link_to "My Episodes", episodes_path %>
+                        </div>
 
-                    <div class="mt-4">
-                        <%= link_to "Favorites", favorites_path %>
-                    </div>
-                    <div class="mt-4">
-                        <%= link_to "History", history_path %>
-                    </div>
-                    <div>
-                        <div data-action="click->navbar#toggleMobileSignout" class="flex items-center mt-6 py-2 hover:opacity-70 hover:cursor-pointer font-semibold">
-                            <img src="<%= Current.user.image %>" alt="profile" width="30" height="30" class="rounded-3xl mr-2"/>
-                            <%= Current.user.name %>
-                            <i data-navbar-target="mobileIcon" class="fa-solid fa-caret-down ml-2"></i>
+                        <div class="mt-4">
+                            <%= link_to "Favorites", favorites_path %>
                         </div>
-                        <div data-navbar-target="mobileSignout" class="hidden">
-                            <%= button_to "Sign out", signout_path, method: :delete, class: "bg-red-500 rounded px-16 py-2 hover:opacity-70 hover:cursor-pointer", id:"mobile_signout" %>
+                        <div class="mt-4">
+                            <%= link_to "History", history_path %>
                         </div>
-                    </div>
+                        <div>
+                            <div data-action="click->navbar#toggleMobileSignout" class="flex items-center mt-6 py-2 hover:opacity-70 hover:cursor-pointer font-semibold">
+                                <img src="<%= Current.user.image %>" alt="profile" width="30" height="30" class="rounded-3xl mr-2"/>
+                                <%= Current.user.name %>
+                                <i data-navbar-target="mobileIcon" class="fa-solid fa-caret-down ml-2"></i>
+                            </div>
+                            <div data-navbar-target="mobileSignout" class="hidden">
+                                <%= button_to "Sign out", signout_path, method: :delete, class: "bg-red-500 rounded px-16 py-2 hover:opacity-70 hover:cursor-pointer", id:"mobile_signout" %>
+                            </div>
+                        </div>
+            </div>
         </div>
-    </div>
+    <% end %>
     
 </nav>
