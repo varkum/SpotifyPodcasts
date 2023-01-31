@@ -12,8 +12,8 @@ export default class extends Controller {
   initialize() {
     let player = YoutubePlayer(this.displayTarget, {
       videoId: this.youtubeIdValue,
-      width: "960",
-      height: "540",
+      width: "80%",
+      height: "540rem",
       playerVars: {
         start: this.startPositionValue,
       },

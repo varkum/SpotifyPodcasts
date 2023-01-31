@@ -28,5 +28,16 @@
             <%= episode.show%>
         </h4>
     </div>
+
+    <div class="lg:hidden flex justify-end m-2">
+        <%= button_to episode_path(episode.id, episode: {last_played: DateTime.now()}, format: 'html'), method: :patch, class: "contents", data: {turbo: false} do %>
+                    <i class="fa-solid fa-play text-green-500 text-2xl cursor-pointer mr-4" ></i>
+                <% end %>
+                <% unless episode.youtube_id.blank?%>
+                    <%= button_to episode_path(episode.id, episode: {last_played: DateTime.now()}, format: 'html', play_source: "yt"), method: :patch, class: "contents", data: {turbo: false} do %>
+                        <i class="fa-brands fa-youtube text-red-500 text-2xl cursor-pointer" ></i>
+                    <% end %>
+                <% end %>
+    </div>
 </div>
 
