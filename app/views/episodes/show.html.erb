@@ -1,4 +1,4 @@
-<% start_position = @episode.youtube_progress.blank? ? (@episode.duration - @episode.progress)/1000 : (@episode.duration - @episode.youtube_progress)/1000 %>
+<% start_position = @episode.youtube_progress.blank? ? (@episode.duration.to_i - @episode.progress.to_i)/1000 : (@episode.duration.to_i - @episode.youtube_progress.to_i)/1000 %>
 
 <div class="w-full flex flex-col items-center" data-controller="youtube" data-youtube-youtube-id-value = "<%= @episode.youtube_id.partition('=').last %>" data-youtube-start-position-value = "<%= start_position %>" data-youtube-duration-value = "<%=@episode.duration%>"> 
     <div class="my-8 text-center">

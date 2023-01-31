@@ -18,12 +18,12 @@
                                 <div class="h-2.5 w-52 bg-gray-600 rounded-full mb-1">
                                     <div class="rounded-full h-2.5 bg-green-500" style="width:<%= ((episode.duration.to_i - episode.progress.to_i) / episode.duration.to_f) * 100 %>%"></div>
                                 </div>
-                                <%= ms_to_time(episode.progress) %> left 
+                                <%= ms_to_time(episode.progress.to_i) %> left 
                             <% else %>
                                 <div class="h-2.5 w-52 bg-gray-600 rounded-full mb-1">
                                     <div class="rounded-full h-2.5 bg-green-500" style="width:<%= ((episode.duration.to_i - episode.youtube_progress.to_i) / episode.duration.to_f) * 100 %>%"></div>
                                 </div>
-                                <%= ms_to_time(episode.youtube_progress) %> left 
+                                <%= ms_to_time(episode.youtube_progress.to_i) %> left 
                             <% end %>
                             
                         <% end %>
