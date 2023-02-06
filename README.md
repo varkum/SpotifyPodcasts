@@ -4,6 +4,7 @@ A web app that connects to your Spotify account to browse and listen to your sav
 
 Built using Rails 7 and Hotwire.
 
-Note: you must be authorized with the Spotify API before making an account due to Spotify Developer API restrictions.
+### Note
+You must be authorized with the Spotify API before making an account due to Spotify Developer API restrictions.
 
-Link: [ ](spotifypodcasts.fly.dev)
+Link: [spotifypodcasts.fly.dev](spotifypodcasts.fly.dev)
