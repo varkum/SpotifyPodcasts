@@ -1,24 +1,7 @@
-# README
+A web app that connects to your Spotify account to browse and listen to your saved podcasts. Listen on Spotify or on Youtube, with synced progress across platforms. Additional features include liking episodes, sorting by new, in progress, or completed, and quick play. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built using Rails 7 and Hotwire.
 
-Things you may want to cover:
+Note: you must be authorized with the Spotify API before making an account due to Spotify Developer API restrictions.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Link: spotifypodcasts.fly.dev
