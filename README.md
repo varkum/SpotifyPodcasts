@@ -8,4 +8,4 @@ Built using Rails 7 and Hotwire.
 You must be authorized with the Spotify API before making an account due to Spotify Developer API restrictions.
 
 ### Link
-[spotifypodcasts.fly.dev](spotifypodcasts.fly.dev)
+[spotifypodcasts.fly.dev](https://spotifypodcasts.fly.dev)
