@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     before_action :set_current_user
     
+
     def require_user_logged_in 
         if Current.user.nil?
             redirect_to root_path
@@ -20,7 +21,4 @@ class ApplicationController < ActionController::Base
         Current.user.get_saved_episodes
         Current.user.clear_episodes
     end
-
-    
-
 end

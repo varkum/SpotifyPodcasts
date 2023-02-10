@@ -16,6 +16,10 @@ class OmniauthCallbacksController < ApplicationController
         
     end
 
+    def failure
+        redirect_to root_path, alert: "Your account is not authorized to access this app via the Spotify API due to Spotify developer restrictions."
+    end
+    private 
     def auth
         request.env['omniauth.auth']
     end
